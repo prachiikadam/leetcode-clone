@@ -6,25 +6,60 @@ import Signin from './components/Signin'
 // Import the functions you need from the SDKs you need
 import { onAuthStateChanged } from "firebase/auth";
 import {  auth} from "./utils/firebase";
+import { RecoilRoot, useRecoilState } from 'recoil';
+import { userAtom } from './store/atoms/user';
 
 
 function App() {
+
+  return <RecoilRoot>
+    <StoreApp/>
+  </RecoilRoot>
+  
+}
+
+
+
+function StoreApp (){
+  const [user ,setUser] = useRecoilState(userAtom)
+  console.log('user is ',user)
+
+
+
   useEffect(()=>{
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
-        const uid = user.uid;
+      if (user && user.email) {
+        setUser({
+          isLoading : false,
+          user : {
+            email: user.email
+          }
+        })
         console.log(user,'userrrrrr')
       } else {
-        // User is signed out
-        // ...
+        setUser({
+          isLoading : false,
+        })
       }
     })
-  })
+  },[])
+
+
+
+  if(user.isLoading){
+    return <div>Loading!!!!!!!!</div>
+  }
+
+  if(!user.user){
+    return <Signin/>
+  }
   return (
-  <Signin/>
+    <>
+    You are logged in as a {user.user?.email}
+    </>
+
   )
+
 }
 
 export default App
