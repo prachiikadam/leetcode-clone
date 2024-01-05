@@ -8,6 +8,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import {  auth} from "./utils/firebase";
 import { RecoilRoot, useRecoilState } from 'recoil';
 import { userAtom } from './store/atoms/user';
+import Topbar from './components/Topbar';
+import Card from './components/Card';
 
 
 function App() {
@@ -56,6 +58,8 @@ function StoreApp (){
   return (
     <>
     You are logged in as a {user.user?.email}
+    <Topbar/>
+    <Card>Hi There</Card>
     </>
 
   )
