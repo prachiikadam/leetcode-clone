@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 
 
 const Topbar = () => {
@@ -52,7 +53,7 @@ const NavBar = () =>{
 
 const NavItem = ({route ,title}:{route:string ,title:string}) =>{
     return(
-        <div className="ml-8 mr-8 cursor-pointer hover:font-bold hover:text-white">{title} </div>
+        <Link to = {route}><div className="ml-8 mr-8 cursor-pointer hover:font-bold hover:text-white">{title} </div></Link>
     )
 }
 

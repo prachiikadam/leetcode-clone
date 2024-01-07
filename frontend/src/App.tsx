@@ -10,6 +10,13 @@ import { RecoilRoot, useRecoilState } from 'recoil';
 import { userAtom } from './store/atoms/user';
 import Topbar from './components/Topbar';
 import Card from './components/Card';
+import { BrowserRouter as Router , Route, Routes } from 'react-router-dom';
+import SubmissionActivity from './components/SubmissionActivity';
+import Landing from './components/Landing';
+import About from './components/About';
+import { SubmissionActivityList } from './components/SubmissionActivityList';
+import ProblemList from './components/ProblemList';
+
 
 
 function App() {
@@ -58,8 +65,20 @@ function StoreApp (){
   return (
     <>
     You are logged in as a {user.user?.email}
+    
+    <Router>
     <Topbar/>
-    <Card>Hi There</Card>
+      <Routes>
+        <Route path= '/about' element ={<About/>}/>
+        <Route path= '/activity' element ={<SubmissionActivityList/>}/>
+        <Route path= '/problems' element ={<ProblemList/>}/>
+        <Route path= '/login' element ={<Signin/>}/>
+
+
+      </Routes>
+     
+      {/* <Card>Hi There</Card> */}
+    </Router>
     </>
 
   )
