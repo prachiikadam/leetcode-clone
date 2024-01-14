@@ -10,10 +10,8 @@ const provider = new GoogleAuthProvider();
 
 
 const Signin = () => {
-
-    const [email ,setEmail] = useState('')
    
-    console.log('Hereeee',auth)
+   
 
   function onSignin(){
     console.log('OnSignin')
@@ -42,11 +40,17 @@ const Signin = () => {
 
   }
   return (
-    <div>
-        <input type='email' placeholder='Enter the email' onChange={(e)=>{
-            setEmail(e.target.value)
-        }}/>
-        <button onClick={onSignin}> Signin</button>
+    <div className="bg-black w-full h-screen flex flex-row items-center justify-center ">
+        <div className="bg-slate-50 w-[400px] h-[400px] border rounded-md">
+            <div className="flex flex-col justify-center items-center ">
+              <img src="../../public/1.png" className="w-[100px] h-[100px] mt-28"/>
+              <button onClick={onSignin} className=" border rounded mt-8 flex flex-row items-center justify-center m-2">
+                <img className = "w-[40px]" src="../../public/google.png" />
+                <span className="pr-4"> Continue With Google </span>
+              </button>
+            </div>
+          
+        </div>
     </div>
     
   )

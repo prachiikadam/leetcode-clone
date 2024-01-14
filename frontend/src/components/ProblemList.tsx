@@ -1,11 +1,21 @@
 
 
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const ProblemList = () => {
+
+
+  //const [startIndex ,setStartIndex] = useState(0)
+
+  useEffect(()=>{
+     
+  },[])
+
   return (
-    <div>ProblemList</div>
+    <div>
+      Problems
+    </div>
   )
 }
 

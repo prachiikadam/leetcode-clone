@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom"
+import { signOut } from "firebase/auth"
+import { auth} from "../utils/firebase";
 
 
 const Topbar = () => {
@@ -34,7 +36,7 @@ const navitems = [
         route :'/leaderboard'
     },
     {
-        name :'Login',
+        name :'Logout',
         route :'/login'
     }
 
@@ -52,8 +54,14 @@ const NavBar = () =>{
 
 
 const NavItem = ({route ,title}:{route:string ,title:string}) =>{
-    return(
-        <Link to = {route}><div className="ml-8 mr-8 cursor-pointer hover:font-bold hover:text-white">{title} </div></Link>
+
+    const handleSigninSignout = async() =>{
+        await signOut(auth)
+    }
+    return( 
+        <div>
+        {route === '/login' ? <button onClick={handleSigninSignout}>{title}</button>   :<Link to = {route}><div className="ml-8 mr-8 cursor-pointer hover:font-bold hover:text-white" >{title} </div></Link>}
+        </div>
     )
 }
 

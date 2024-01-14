@@ -63,7 +63,7 @@ function StoreApp (){
     return <Signin/>
   }
   return (
-    <>
+    <div className='max-w-[1280px] ml-auto mr-auto'>
     You are logged in as a {user.user?.email}
     
     <Router>
@@ -79,7 +79,7 @@ function StoreApp (){
      
       {/* <Card>Hi There</Card> */}
     </Router>
-    </>
+    </div>
 
   )
 

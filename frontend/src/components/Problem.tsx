@@ -1,8 +1,16 @@
 import React from 'react'
 
-const Problem = () => {
+
+interface ProblemItem {
+  id :string,
+  title : string,
+}
+
+const Problem = ({id ,title} : ProblemItem) => {
   return (
-    <div>Problem</div>
+    <div>
+      {id }{title}
+    </div>
   )
 }
 
